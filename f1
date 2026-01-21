@@ -1,0 +1,15 @@
+import pandas as pd
+from sklearn.cluster import KMeans
+
+# Load data
+data = pd.read_csv("customers.csv")
+
+# Select only required columns
+X = data[['Income', 'Spending']]
+
+# Apply K-Means
+model = KMeans(n_clusters=3)
+data['Group'] = model.fit_predict(X)
+
+# Show result
+print(data)
